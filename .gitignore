@@ -1,0 +1,11 @@
+node_modules/
+
+# IDE #
+.idea/
+
+# Built Files #
+*.spec.js
+*.js.map
+
+# Test Coverage #
+.nyc_output/
