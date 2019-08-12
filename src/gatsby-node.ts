@@ -21,13 +21,17 @@ function validateConfigOptions (configOptions: ConfigOptions): void {
   }
 }
 
-export function sourceNodes ({ actions, createNodeId, createContentDigest }: SourceNodesArgs, configOptions: ConfigOptions): Promise<void> {
-  const { createNode } = actions
-
+export function sourceNodes (sourceNodesArgs: SourceNodesArgs, configOptions: ConfigOptions): Promise<void[]> {
   validateConfigOptions(configOptions)
 
-  return getPublicBusinessUnitInfo(configOptions).then((info: any): void => {
-    const nodeContent = JSON.stringify(info)
+  return Promise.all([createPublicBusinessUnitInfoNode(sourceNodesArgs, configOptions)])
+}
+
+function createPublicBusinessUnitInfoNode (sourceNodesArgs: SourceNodesArgs, configOptions: ConfigOptions): Promise<void> {
+  const { actions, createNodeId, createContentDigest } = sourceNodesArgs
+  const { createNode } = actions
+  return getPublicBusinessUnitInfo(configOptions).then((publicBusinessUnitInfo: any): void => {
+    const nodeContent = JSON.stringify(publicBusinessUnitInfo)
     const nodeMeta = {
       // the cat fact unique id is in _id
       id: createNodeId(`trustpilot-public-business-unit-${configOptions.domainName}`),
@@ -37,10 +41,10 @@ export function sourceNodes ({ actions, createNodeId, createContentDigest }: Sou
         // this will be important in finding the node
         type: `TrustPilotPublicBusinessUnit`,
         content: nodeContent,
-        contentDigest: createContentDigest(info)
+        contentDigest: createContentDigest(publicBusinessUnitInfo)
       }
     }
-    const node = Object.assign({}, info, nodeMeta)
+    const node = Object.assign({}, publicBusinessUnitInfo, nodeMeta)
     createNode(node)
   })
 }

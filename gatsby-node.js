@@ -9,10 +9,14 @@ function validateConfigOptions(configOptions) {
         throw new Error('domainName config option is required');
     }
 }
-function sourceNodes(_a, configOptions) {
-    var actions = _a.actions, createNodeId = _a.createNodeId, createContentDigest = _a.createContentDigest;
-    var createNode = actions.createNode;
+function sourceNodes(sourceNodesArgs, configOptions) {
     validateConfigOptions(configOptions);
+    return Promise.all([createPublicBusinessUnitInfoNode(sourceNodesArgs, configOptions)]);
+}
+exports.sourceNodes = sourceNodes;
+function createPublicBusinessUnitInfoNode(sourceNodesArgs, configOptions) {
+    var actions = sourceNodesArgs.actions, createNodeId = sourceNodesArgs.createNodeId, createContentDigest = sourceNodesArgs.createContentDigest;
+    var createNode = actions.createNode;
     return trustpilot_helpers_1.getPublicBusinessUnitInfo(configOptions).then(function (info) {
         var nodeContent = JSON.stringify(info);
         var nodeMeta = {
@@ -31,5 +35,4 @@ function sourceNodes(_a, configOptions) {
         createNode(node);
     });
 }
-exports.sourceNodes = sourceNodes;
 //# sourceMappingURL=gatsby-node.js.map

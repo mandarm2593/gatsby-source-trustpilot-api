@@ -27,7 +27,7 @@ export function getPublicBusinessUnitInfo (configOptions: ConfigOptions): Promis
 }
 
 interface PublicBusinessUnitInfo {
-    id: string
+    businessUnitId: string
     displayName: string
     websiteUrl: string
     trustScore: number
@@ -49,5 +49,7 @@ function processPublicBusinessUnitInfo (publicBusinessUnitInfo: {[key: string]: 
   delete publicBusinessUnitInfo.name
   delete publicBusinessUnitInfo.status
   delete publicBusinessUnitInfo.score
+  publicBusinessUnitInfo.businessUnitId = publicBusinessUnitInfo.id
+  delete publicBusinessUnitInfo.id
   return publicBusinessUnitInfo
 }
