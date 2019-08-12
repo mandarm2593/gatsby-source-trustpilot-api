@@ -33,12 +33,10 @@ function createPublicBusinessUnitInfoNode (sourceNodesArgs: SourceNodesArgs, con
   return getPublicBusinessUnitInfo(configOptions).then((publicBusinessUnitInfo: any): void => {
     const nodeContent = JSON.stringify(publicBusinessUnitInfo)
     const nodeMeta = {
-      // the cat fact unique id is in _id
       id: createNodeId(`trustpilot-public-business-unit-${configOptions.domainName}`),
       parent: null,
       children: [],
       internal: {
-        // this will be important in finding the node
         type: `TrustPilotPublicBusinessUnit`,
         content: nodeContent,
         contentDigest: createContentDigest(publicBusinessUnitInfo)
