@@ -50,6 +50,10 @@
   "peerDependencies": {
     "gatsby": "^2.0.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mandarm2593/gatsby-source-trustpilot-api.git"
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
