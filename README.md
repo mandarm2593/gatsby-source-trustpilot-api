@@ -20,7 +20,7 @@ More features will be added in further releases.
               resolve: 'gatsby-source-trustpilot-api',
               options: {
                   apiKey: 'YOUR_TRUSTPILOT_API_KEY',
-                  domainName: 'YOUR_DOMAIN_NAME'
+                  domainName: 'YOUR_DOMAIN_NAME' // ex: trustpilot.com
               }
           }
       ]
