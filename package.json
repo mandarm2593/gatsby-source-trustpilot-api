@@ -19,6 +19,13 @@
   "contributors": [
     "Tommy May III <tommymay37@gmail.com>"
   ],
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-source",
+    "trustpilot api",
+    "trustpilot data"
+  ],
   "license": "MIT",
   "dependencies": {
     "axios": "^0.19.0"

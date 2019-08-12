@@ -17,8 +17,8 @@ exports.sourceNodes = sourceNodes;
 function createPublicBusinessUnitInfoNode(sourceNodesArgs, configOptions) {
     var actions = sourceNodesArgs.actions, createNodeId = sourceNodesArgs.createNodeId, createContentDigest = sourceNodesArgs.createContentDigest;
     var createNode = actions.createNode;
-    return trustpilot_helpers_1.getPublicBusinessUnitInfo(configOptions).then(function (info) {
-        var nodeContent = JSON.stringify(info);
+    return trustpilot_helpers_1.getPublicBusinessUnitInfo(configOptions).then(function (publicBusinessUnitInfo) {
+        var nodeContent = JSON.stringify(publicBusinessUnitInfo);
         var nodeMeta = {
             // the cat fact unique id is in _id
             id: createNodeId("trustpilot-public-business-unit-" + configOptions.domainName),
@@ -28,10 +28,10 @@ function createPublicBusinessUnitInfoNode(sourceNodesArgs, configOptions) {
                 // this will be important in finding the node
                 type: "TrustPilotPublicBusinessUnit",
                 content: nodeContent,
-                contentDigest: createContentDigest(info)
+                contentDigest: createContentDigest(publicBusinessUnitInfo)
             }
         };
-        var node = Object.assign({}, info, nodeMeta);
+        var node = Object.assign({}, publicBusinessUnitInfo, nodeMeta);
         createNode(node);
     });
 }

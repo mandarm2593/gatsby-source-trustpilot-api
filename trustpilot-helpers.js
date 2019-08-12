@@ -29,6 +29,8 @@ function processPublicBusinessUnitInfo(publicBusinessUnitInfo) {
     delete publicBusinessUnitInfo.name;
     delete publicBusinessUnitInfo.status;
     delete publicBusinessUnitInfo.score;
+    publicBusinessUnitInfo.businessUnitId = publicBusinessUnitInfo.id;
+    delete publicBusinessUnitInfo.id;
     return publicBusinessUnitInfo;
 }
 //# sourceMappingURL=trustpilot-helpers.js.map

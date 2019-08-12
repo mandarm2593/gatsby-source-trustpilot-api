@@ -21,14 +21,14 @@ More features will be added in further releases.
               options: {
                   apiKey: 'YOUR_TRUSTPILOT_API_KEY',
                   domainName: 'YOUR_DOMAIN_NAME'
-              },
-          },
-      ],
+              }
+          }
+      ]
     };
 ```
 
 ## Config Options
-The plugin takes in to config options,
+The plugin takes two REQUIRED config options,
 1. `apiKey` : This is your Trustpilot API key. If you dont have one yet, here is a link - [Get Started - Trustpilot API](https://support.trustpilot.com/hc/en-us/articles/207309867-Getting-started-with-Trustpilot-s-APIs)
 2. `domainName`: This is the domain name that you want to fetch TrustPilot Data for. 
 
