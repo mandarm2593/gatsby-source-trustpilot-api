@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-trustpilot-api",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "main": "index.js",
   "description": "Creates TRUSTPILOT query nodes into Gatsby's GraphQL schema",
   "scripts": {
@@ -8,7 +8,8 @@
     "package": "npm run lint && npm run build && npx standard-version",
     "lint": "npx eslint --config .eslintrc.js --ext .js,.ts ./src",
     "lint:fix": "npx eslint --fix --config .eslintrc.js --ext .js,.ts ./src",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "tar": "npm run build && npm pack"
   },
   "files": [
     "gatsby-node.js",
@@ -28,7 +29,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.0"
+    "axios": "^0.19.0",
+    "gatsby-cli": "^2.8.3"
   },
   "devDependencies": {
     "@types/node": "^10.14.15",
