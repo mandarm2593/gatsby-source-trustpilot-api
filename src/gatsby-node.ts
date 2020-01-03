@@ -1,4 +1,4 @@
-import { getPublicBusinessUnitInfo } from './trustpilot-helpers'
+import { getPublicBusinessUnitInfo, getBusinessUnitsReviews } from './trustpilot-helpers'
 
 export interface SourceNodesArgs {
     actions: {[key: string]: any}
@@ -24,13 +24,15 @@ function validateConfigOptions (configOptions: ConfigOptions): void {
 export function sourceNodes (sourceNodesArgs: SourceNodesArgs, configOptions: ConfigOptions): Promise<void[]> {
   validateConfigOptions(configOptions)
 
-  return Promise.all([createPublicBusinessUnitInfoNode(sourceNodesArgs, configOptions)])
+  return Promise.all([createPublicBusinessUnitInfoNode(sourceNodesArgs, configOptions),
+    createPublicBusinessUnitReview(sourceNodesArgs, configOptions)])
 }
 
-function createPublicBusinessUnitInfoNode (sourceNodesArgs: SourceNodesArgs, configOptions: ConfigOptions): Promise<void> {
-  const { actions, createNodeId, createContentDigest } = sourceNodesArgs
-  const { createNode } = actions
-  return getPublicBusinessUnitInfo(configOptions).then((publicBusinessUnitInfo: any): void => {
+async function createPublicBusinessUnitInfoNode (sourceNodesArgs: SourceNodesArgs, configOptions: ConfigOptions): Promise<void> {
+  try {
+    const { actions, createNodeId, createContentDigest } = sourceNodesArgs
+    const { createNode } = actions
+    const publicBusinessUnitInfo = await getPublicBusinessUnitInfo(configOptions)
     const nodeContent = JSON.stringify(publicBusinessUnitInfo)
     const nodeMeta = {
       id: createNodeId(`trustpilot-public-business-unit-${configOptions.domainName}`),
@@ -44,5 +46,30 @@ function createPublicBusinessUnitInfoNode (sourceNodesArgs: SourceNodesArgs, con
     }
     const node = Object.assign({}, publicBusinessUnitInfo, nodeMeta)
     createNode(node)
-  })
+  } catch (err) {
+    throw new Error(`Error occurred while fetching data: ${err}`)
+  }
+}
+
+async function createPublicBusinessUnitReview (sourceNodesArgs: SourceNodesArgs, configOptions: ConfigOptions): Promise<void> {
+  try {
+    const { actions, createNodeId, createContentDigest } = sourceNodesArgs
+    const { createNode } = actions
+    const BusinessUnitReviews = await getBusinessUnitsReviews(configOptions)
+    const nodeContent = JSON.stringify(BusinessUnitReviews)
+    const nodeMeta = {
+      id: createNodeId(`trustpilot-public-business-unit-${configOptions.domainName}`),
+      parent: null,
+      children: [],
+      internal: {
+        type: `TrustPilotBusinessUnitReviews`,
+        content: nodeContent,
+        contentDigest: createContentDigest(BusinessUnitReviews)
+      }
+    }
+    const node = Object.assign({}, BusinessUnitReviews, nodeMeta)
+    createNode(node)
+  } catch (err) {
+    throw new Error(`Error occurred while fetching data: ${err}`)
+  }
 }
