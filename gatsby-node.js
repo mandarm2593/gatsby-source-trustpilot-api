@@ -52,10 +52,11 @@ function sourceNodes(sourceNodesArgs, configOptions) {
 exports.sourceNodes = sourceNodes;
 function createPublicBusinessUnitInfoNode(sourceNodesArgs, configOptions) {
     return __awaiter(this, void 0, void 0, function () {
-        var actions, createNodeId, createContentDigest, createNode, publicBusinessUnitInfo, nodeContent, nodeMeta, node;
+        var actions, createNodeId, createContentDigest, createNode, publicBusinessUnitInfo, nodeContent, nodeMeta, node, err_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    _a.trys.push([0, 2, , 3]);
                     actions = sourceNodesArgs.actions, createNodeId = sourceNodesArgs.createNodeId, createContentDigest = sourceNodesArgs.createContentDigest;
                     createNode = actions.createNode;
                     return [4 /*yield*/, trustpilot_helpers_1.getPublicBusinessUnitInfo(configOptions)];
@@ -74,17 +75,23 @@ function createPublicBusinessUnitInfoNode(sourceNodesArgs, configOptions) {
                     };
                     node = Object.assign({}, publicBusinessUnitInfo, nodeMeta);
                     createNode(node);
-                    return [2 /*return*/];
+                    return [3 /*break*/, 3];
+                case 2:
+                    err_1 = _a.sent();
+                    console.error("Error while fetching data: " + err_1 + ".");
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     });
 }
 function createPublicBusinessUnitReview(sourceNodesArgs, configOptions) {
     return __awaiter(this, void 0, void 0, function () {
-        var actions, createNodeId, createContentDigest, createNode, BusinessUnitReviews, nodeContent, nodeMeta, node;
+        var actions, createNodeId, createContentDigest, createNode, BusinessUnitReviews, nodeContent, nodeMeta, node, err_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
+                    _a.trys.push([0, 2, , 3]);
                     actions = sourceNodesArgs.actions, createNodeId = sourceNodesArgs.createNodeId, createContentDigest = sourceNodesArgs.createContentDigest;
                     createNode = actions.createNode;
                     return [4 /*yield*/, trustpilot_helpers_1.getBusinessUnitsReviews(configOptions)];
@@ -103,7 +110,12 @@ function createPublicBusinessUnitReview(sourceNodesArgs, configOptions) {
                     };
                     node = Object.assign({}, BusinessUnitReviews, nodeMeta);
                     createNode(node);
-                    return [2 /*return*/];
+                    return [3 /*break*/, 3];
+                case 2:
+                    err_2 = _a.sent();
+                    console.error("Error while fetching data: " + err_2 + ".");
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     });

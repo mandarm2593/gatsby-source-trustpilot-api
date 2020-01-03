@@ -8,8 +8,7 @@
     "package": "npm run lint && npm run build && npx standard-version",
     "lint": "npx eslint --config .eslintrc.js --ext .js,.ts ./src",
     "lint:fix": "npx eslint --fix --config .eslintrc.js --ext .js,.ts ./src",
-    "commit": "npx git-cz",
-    "tar": "npm run build && npm pack"
+    "commit": "npx git-cz"
   },
   "files": [
     "gatsby-node.js",
@@ -18,7 +17,8 @@
   ],
   "author": "Mandar Mathure <mandarm2593@gmail.com>",
   "contributors": [
-    "Tommy May III <tommymay37@gmail.com>"
+    "Tommy May III <tommymay37@gmail.com>",
+    "Heta Zinzuvadia <hetazinzuvadia@gmail.com>"
   ],
   "keywords": [
     "gatsby",

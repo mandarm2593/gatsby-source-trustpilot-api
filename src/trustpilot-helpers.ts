@@ -68,7 +68,7 @@ function processPublicBusinessUnitInfo (publicBusinessUnitInfo: {[key: string]: 
   return publicBusinessUnitInfo
 }
 
-interface BusinessUnitReviews { 
+interface BusinessUnitReviews {
   title: string
   text: string
   stars: number
