@@ -7,8 +7,7 @@
     "build": "npx tsc --project tsconfig.json",
     "package": "npm run lint && npm run build && npx standard-version",
     "lint": "npx eslint --config .eslintrc.js --ext .js,.ts ./src",
-    "lint:fix": "npx eslint --fix --config .eslintrc.js --ext .js,.ts ./src",
-    "commit": "npx git-cz"
+    "lint:fix": "npx eslint --fix --config .eslintrc.js --ext .js,.ts ./src"
   },
   "files": [
     "gatsby-node.js",
