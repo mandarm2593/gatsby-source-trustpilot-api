@@ -42,7 +42,6 @@ function processPublicBusinessUnitInfo(publicBusinessUnitInfo) {
     delete publicBusinessUnitInfo.links;
     delete publicBusinessUnitInfo.name;
     delete publicBusinessUnitInfo.status;
-    delete publicBusinessUnitInfo.score;
     publicBusinessUnitInfo.businessUnitId = publicBusinessUnitInfo.id;
     delete publicBusinessUnitInfo.warning;
     delete publicBusinessUnitInfo.id;
