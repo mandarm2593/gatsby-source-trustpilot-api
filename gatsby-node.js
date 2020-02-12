@@ -78,8 +78,7 @@ function createPublicBusinessUnitInfoNode(sourceNodesArgs, configOptions) {
                     return [3 /*break*/, 3];
                 case 2:
                     err_1 = _a.sent();
-                    console.error("Error while fetching data: " + err_1 + ".");
-                    return [3 /*break*/, 3];
+                    throw new Error("Error occurred while fetching data: " + err_1);
                 case 3: return [2 /*return*/];
             }
         });
@@ -113,8 +112,7 @@ function createPublicBusinessUnitReview(sourceNodesArgs, configOptions) {
                     return [3 /*break*/, 3];
                 case 2:
                     err_2 = _a.sent();
-                    console.error("Error while fetching data: " + err_2 + ".");
-                    return [3 /*break*/, 3];
+                    throw new Error("Error occurred while fetching data: " + err_2);
                 case 3: return [2 /*return*/];
             }
         });

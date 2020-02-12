@@ -43,8 +43,10 @@ interface PublicBusinessUnitInfo {
   businessUnitId: string
   displayName: string
   websiteUrl: string
-  trustScore: number
-  stars: number
+  score: {
+    trustScore: number
+    stars: number
+  }
   country: string
   numberOfReviews: {
     total: number
@@ -61,7 +63,6 @@ function processPublicBusinessUnitInfo (publicBusinessUnitInfo: {[key: string]: 
   delete publicBusinessUnitInfo.links
   delete publicBusinessUnitInfo.name
   delete publicBusinessUnitInfo.status
-  delete publicBusinessUnitInfo.score
   publicBusinessUnitInfo.businessUnitId = publicBusinessUnitInfo.id
   delete publicBusinessUnitInfo.warning
   delete publicBusinessUnitInfo.id
