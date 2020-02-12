@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.8](https://github.com/mandarm2593/gatsby-source-trustpilot-api/compare/v1.2.7...v1.2.8) (2020-02-12)
+
+
+
 ### [1.2.7](https://github.com/mandarm2593/gatsby-source-trustpilot-api/compare/v1.2.4...v1.2.7) (2020-01-03)
 
 
